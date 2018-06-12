@@ -10,9 +10,6 @@
     "test": "jest"
   },
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://repo.ekuaibao.com/repository/ekuaibao-npm/"
-  },
   "peerDependencies": {
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
