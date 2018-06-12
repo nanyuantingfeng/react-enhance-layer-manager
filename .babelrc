@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "external-helpers",
+    "transform-runtime",
+    "transform-regenerator",
+    "transform-decorators-legacy",
+    "add-module-exports"
+  ]
+}
