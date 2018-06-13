@@ -115,5 +115,11 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+src/
+test/
+webpack.config.js
+.gitlab-ci.yml
+.gitignore
+.npmignore
+package-lock.json
 
-!lib

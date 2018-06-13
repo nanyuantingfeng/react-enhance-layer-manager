@@ -1,11 +1,11 @@
 {
   "name": "react-enhance-layer-manager",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.3",
   "main": "lib/index.js",
   "scripts": {
     "build": "mkdir -p lib && babel ./src -d ./lib",
-    "publish2npm": "mkdir -p build && cp -R style lib package.json README.md build && npm publish ./build",
-    "clean": "rm -rf ./lib ./build",
+    "publish2npm": "npm run build && npm publish",
+    "clean": "rm -rf ./lib",
     "dev": "hollow dev -p 9999",
     "test": "jest"
   },
