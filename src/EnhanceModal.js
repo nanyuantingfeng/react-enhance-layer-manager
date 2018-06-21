@@ -8,7 +8,7 @@ function IS_PROMISE(value) {
   return value && typeof value.then === 'function';
 }
 
-export const EnhanceModal = (config) => (Component) => class extends Component {
+export const EnhanceModal = (config) => (C) => class extends Component {
 
   static displayName = 'EnhanceModal';
 
@@ -87,11 +87,11 @@ export const EnhanceModal = (config) => (Component) => class extends Component {
              onCancel={this.handleCancel}
              onOk={() => this.handleOk()}>
 
-        <Component  {...props}
-                    ref="REF_ORIGINAL_COMPONENT"
-                    visible={visible}
-                    overrideGetResult={this.handleOverrideGetResult}
-                    layer={this.layer}/>
+        <C  {...props}
+            ref="REF_ORIGINAL_COMPONENT"
+            visible={visible}
+            overrideGetResult={this.handleOverrideGetResult}
+            layer={this.layer}/>
 
       </Modal>
     );

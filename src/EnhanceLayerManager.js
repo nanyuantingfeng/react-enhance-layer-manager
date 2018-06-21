@@ -56,7 +56,7 @@ function checkPromiseLayer(layers, key) {
   return Promise.resolve(null);
 }
 
-export const EnhanceLayerManager = (layers) => (Component) => class extends Component {
+export const EnhanceLayerManager = (layers) => (C) => class extends Component {
 
   static displayName = 'EnhanceLayerManager';
 
@@ -170,7 +170,7 @@ export const EnhanceLayerManager = (layers) => (Component) => class extends Comp
     let overlay = this.renderLayers();
     return (
       <RenderOverlay overlay={overlay}>
-        <Component {...state} {...props} layerManager={layerManager}/>
+        <C {...state} {...props} layerManager={layerManager}/>
       </RenderOverlay>
     );
   }
