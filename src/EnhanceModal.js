@@ -1,14 +1,14 @@
 /************************************************
  * Created By nanyuantingfeng On 6/15/16 10:48.
  ************************************************/
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Modal } from 'antd';
 
 function IS_PROMISE(value) {
   return value && typeof value.then === 'function';
 }
 
-export const EnhanceModal = (config) => (Component) => class extends PureComponent {
+export const EnhanceModal = (config) => (Component) => class extends Component {
 
   static displayName = 'EnhanceModal';
 

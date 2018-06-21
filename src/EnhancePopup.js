@@ -2,7 +2,7 @@
  * Created By nanyuantingfeng On 6/17/16 16:35.
  ************************************************/
 import styles from '../style/transition.module.less'
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { Transition } from 'react-transition-group'
 import Popup from './Popup'
 
@@ -41,7 +41,7 @@ function buildStyle (timeout, width, status) {
   }
 }
 
-export const EnhancePopup = (config = {}) => (Component) => class extends PureComponent {
+export const EnhancePopup = (config = {}) => (Component) => class extends Component {
   static displayName = 'EnhancePopup'
 
   constructor (props, ...args) {

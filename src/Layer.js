@@ -2,7 +2,7 @@
  * Created by nanyuantingfeng on 8/29/16 11:17.
  **************************************************/
 import '../style/layer.less';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 /**
  *
@@ -18,7 +18,7 @@ import React, { PureComponent } from 'react';
  *
  */
 
-export default class LayerView extends PureComponent {
+export default class LayerView extends Component {
 
   static displayName = 'LayerView';
 

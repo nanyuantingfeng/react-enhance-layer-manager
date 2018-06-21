@@ -1,13 +1,13 @@
 /**************************************************
  * Created by nanyuantingfeng on 07/06/2017 02:31.
  **************************************************/
-import React, { Children, PureComponent } from 'react';
+import React, { Children, Component } from 'react';
 import {
   unmountComponentAtNode,
   unstable_renderSubtreeIntoContainer
 } from 'react-dom';
 
-export default class RenderOverlay extends PureComponent {
+export default class RenderOverlay extends Component {
 
   static defaultProps = {
     overlay: null,

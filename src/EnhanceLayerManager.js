@@ -1,7 +1,7 @@
 /************************************************
  * Created By nanyuantingfeng On 6/15/16 10:48.
  ************************************************/
-import React, { createElement, PureComponent } from 'react';
+import React, { createElement, Component } from 'react';
 import MessageCenter from 'message-center.js';
 import RenderOverlay from './RenderOverlay';
 
@@ -56,7 +56,7 @@ function checkPromiseLayer(layers, key) {
   return Promise.resolve(null);
 }
 
-export const EnhanceLayerManager = (layers) => (Component) => class extends PureComponent {
+export const EnhanceLayerManager = (layers) => (Component) => class extends Component {
 
   static displayName = 'EnhanceLayerManager';
 

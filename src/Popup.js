@@ -2,10 +2,10 @@
  * Created By nanyuantingfeng On 6/7/16 11:48.
  ************************************************/
 import styles from '../style/popup.module.less';
-import React, { Children, cloneElement, PureComponent } from 'react';
+import React, { Children, cloneElement, Component } from 'react';
 import { Icon } from 'antd';
 
-export default class Popup extends PureComponent {
+export default class Popup extends Component {
 
   constructor(props, ...args) {
     super(props, ...args);

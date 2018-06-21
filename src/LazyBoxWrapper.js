@@ -1,9 +1,9 @@
 /************************************************
  * Created By nanyuantingfeng On 7/3/16 02:55.
  ************************************************/
-import React, { Children, PureComponent } from 'react';
+import React, { Children, Component } from 'react';
 
-export default class LazyBoxWrapper extends PureComponent {
+export default class LazyBoxWrapper extends Component {
 
   constructor() {
     super();
