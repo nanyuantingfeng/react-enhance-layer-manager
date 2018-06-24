@@ -23,7 +23,7 @@ function fnOutCall(fn, ...args) {
 }
 
 function fnOutWrapper(fn) {
-  return (...args) => this::fnOutCall(fn, ...args);
+  return (...args) => fnOutCall.call(this, fn, ...args);
 }
 
 function buildStyle(timeout, width, status) {
@@ -90,7 +90,11 @@ export const EnhancePopup = (config = {}) => (C) => class extends Component {
 
     data.then(d => {
       let {onOk} = this.props;
-      this::fnOutCall(onOk, d);
+
+      if (d !== false) {
+        fnOutCall.call(this, onOk, d);
+      }
+
     }, e => {});
   };
 

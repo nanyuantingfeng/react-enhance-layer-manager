@@ -66,7 +66,11 @@ export const EnhanceModal = (config) => (C) => class extends Component {
 
     data.then(d => {
       this.setState({loading: false, visible: false});
-      onOk && onOk(d);
+
+      if (d !== false) {
+        onOk && onOk(d);
+      }
+
     }, e => {
       this.setState({loading: false});
     });
