@@ -1,6 +1,6 @@
 {
   "name": "react-enhance-layer-manager",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
     "build": "mkdir -p lib && babel ./src -d ./lib",
