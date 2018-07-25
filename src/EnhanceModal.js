@@ -1,104 +1,41 @@
 /************************************************
  * Created By nanyuantingfeng On 6/15/16 10:48.
  ************************************************/
-import React, { Component } from 'react';
+import React from 'react';
+
+import EnhanceLayerBase from './EnhanceLayerBase';
 import { Modal } from 'antd';
 
-function IS_PROMISE(value) {
-  return value && typeof value.then === 'function';
+export function EnhanceModal(config = {}) {
+
+  return (Component) => class extends EnhanceLayerBase {
+
+    static displayName = 'EnhanceModal';
+
+    // 此处 需要注意, Modal:onOk 返回的第一个参数是有值的, 不符合会掉条件
+    handleOk2 = () => this.handleOk();
+
+    render() {
+      const {...props} = this.props;
+      const {visible, loading, overriddenProps, iN} = this.state;
+
+      return (
+        <Modal {...config} {...props} {...overriddenProps}
+               visible={iN}
+               confirmLoading={loading}
+               onCancel={this.handleCancel}
+               onOk={this.handleOk2}>
+
+          <Component  {...props}
+                      ref="REF_ORIGINAL_COMPONENT_LAYER"
+                      visible={visible}
+                      overrideGetResult={this.handleOverrideGetResult}
+                      layer={this.layer}/>
+
+        </Modal>
+      );
+    }
+  };
 }
 
-export const EnhanceModal = (config) => (C) => class extends Component {
-
-  static displayName = 'EnhanceModal';
-
-  constructor(props, ...args) {
-    super(props, ...args);
-    let {visible} = props;
-
-    this.state = {
-      visible: visible || false,
-      loading: false,
-      overriddenProps: {}
-    };
-
-    this.handleCancel = :: this.handleCancel;
-    this.handleOk = :: this.handleOk;
-    this.handleOverride = :: this.handleOverride;
-    this.handleOverrideGetResult = :: this.handleOverrideGetResult;
-
-    this.layer = {
-      emitOk: this.handleOk,
-      emitCancel: this.handleCancel,
-      override: this.handleOverride,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({visible: nextProps.visible});
-  }
-
-  handleOverrideGetResult(fn) {
-    this.getResult = fn;
-  }
-
-  handleCancel() {
-    this.setState({visible: false});
-    let {onCancel} = this.props;
-    onCancel && onCancel();
-  }
-
-  handleOk(data) {
-    let ref = this.refs['REF_ORIGINAL_COMPONENT'];
-    data = data || (this.getResult ? this.getResult() : ref.getResult());
-
-    if (data === false) {
-      return false;
-    }
-
-    if (!IS_PROMISE(data)) {
-      data = Promise.resolve(data);
-    }
-
-    this.setState({loading: true});
-
-    let {onOk} = this.props;
-
-    data.then(d => {
-      this.setState({loading: false, visible: false});
-
-      if (d !== false) {
-        onOk && onOk(d);
-      }
-
-    }, e => {
-      this.setState({loading: false});
-    });
-  }
-
-  handleOverride(overriddenProps) {
-    this.setState({overriddenProps});
-  }
-
-  render() {
-    let {...props} = this.props;
-    let {visible, loading, overriddenProps} = this.state;
-
-    return (
-      <Modal {...config} {...props} {...overriddenProps}
-             visible={visible}
-             confirmLoading={loading}
-             onCancel={this.handleCancel}
-             onOk={() => this.handleOk()}>
-
-        <C  {...props}
-            ref="REF_ORIGINAL_COMPONENT"
-            visible={visible}
-            overrideGetResult={this.handleOverrideGetResult}
-            layer={this.layer}/>
-
-      </Modal>
-    );
-  }
-};
-
+export default EnhanceModal;

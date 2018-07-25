@@ -1,17 +1,14 @@
 /************************************************
  * Created By nanyuantingfeng On 7/3/16 02:55.
  ************************************************/
-import React, { Children, Component } from 'react';
+import React from 'react';
 
-export default class LazyBoxWrapper extends Component {
+export default class LazyBoxWrapper extends React.Component {
 
-  constructor() {
-    super();
-    this.isFirstLoadChild = true;
-  }
+  isFirstLoadChild = true;
 
   renderWrap() {
-    return Children.only(this.props.children);
+    return React.Children.only(this.props.children);
   }
 
   render() {

@@ -3,18 +3,17 @@
  **************************************************/
 import React, { PureComponent } from 'react';
 
-import { EnhanceModal } from '../src';
+import { EnhancePopup } from '../src';
 import { Button } from 'antd';
 
-@EnhanceModal()
-export default class M2 extends PureComponent {
-
-  componentWillMount() {
-    //debugger
-  }
+@EnhancePopup({
+  width: 600,
+  timeout: 300,
+})
+export default class PP extends PureComponent {
 
   getResult = () => {
-    return 'M2';
+    return 'PP';
   };
 
   handleClickClose = () => {
@@ -24,9 +23,10 @@ export default class M2 extends PureComponent {
   render() {
     return (
       <div>
-        <h1> M2</h1>
+        <h1> PP </h1>
 
         <Button onClick={this.handleClickClose}>emitOk</Button>
+
       </div>
     );
   }

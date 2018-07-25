@@ -2,23 +2,9 @@
  * Created by nanyuantingfeng on 8/29/16 11:17.
  **************************************************/
 import '../style/layer.less';
-import React, { Component } from 'react';
+import React from 'react';
 
-/**
- *
- title: PropTypes.string,
- footer: PropTypes.element,
- data: PropTypes.object,
- width: PropTypes.number,
- loading: PropTypes.bool,
- loadingText: PropTypes.string,
- *
- *
- *
- *
- */
-
-export default class LayerView extends Component {
+export default class Layer extends React.Component {
 
   static displayName = 'LayerView';
 
@@ -36,8 +22,9 @@ export default class LayerView extends Component {
   }
 
   render() {
-    let {visible} = this.state;
-    let {style, children} = this.props;
+    const {visible} = this.state;
+    const {style, children} = this.props;
+
     return (
       <div className={`layer_wrapper ${visible ? 'css_animate' : ''}`}
            style={style}>

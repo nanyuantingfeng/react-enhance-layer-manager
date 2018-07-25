@@ -3,10 +3,12 @@
  ************************************************************/
 module.exports = async function (context) {
 
-  context.babelOptions.plugins.push([
-    'import', {style: true, libraryName: 'antd',}
-  ]);
+  const {babelOptions} = context;
 
-  context.entry = './test/app.js';
+  babelOptions.plugins.push(['import', {style: true, libraryName: 'antd',}]);
+
+  context.entry = {
+    index: './test/app.js'
+  };
 
 };

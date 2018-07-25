@@ -2,10 +2,10 @@
  * Created By nanyuantingfeng On 6/7/16 11:48.
  ************************************************/
 import styles from '../style/popup.module.less';
-import React, { Children, cloneElement, Component } from 'react';
+import React from 'react';
 import { Icon } from 'antd';
 
-export default class Popup extends Component {
+export default class Popup extends React.Component {
 
   constructor(props, ...args) {
     super(props, ...args);
@@ -29,9 +29,7 @@ export default class Popup extends Component {
 
     if (footer && footer.length > 0) {
       ff = true;
-      footer = Children.map(footer, (line, key) => {
-        return cloneElement(line, {key});
-      });
+      footer = React.Children.map(footer, (line, key) => React.cloneElement(line, {key}), null);
     }
 
     return (
